@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/weijingliu/.vim'
+let g:netrw_dirhist_2='/Users/weijingliu'
+let g:netrw_dirhist_3='/Users/weijingliu/Documents'
+let g:netrw_dirhist_4='/Users/weijingliu/Dropbox/VIM'
