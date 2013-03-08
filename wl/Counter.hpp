@@ -46,11 +46,15 @@ public:
 
     static int HowManyAlive() throw()
     { 
-        return objects_alive_ - 1; 
+        // -1 for end_of_program_trigger, 
+        // which should be invisible to user
+        return objects_alive_ - 1;       
     }
 
     static int HowManyCreated() throw()
     {
+        // -1 for end_of_program_trigger, 
+        // which should be invisible to user
         return objects_created_ - 1;
     }
 
