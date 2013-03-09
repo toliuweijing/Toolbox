@@ -1,16 +1,19 @@
-EXE=
-SRCS=
+SRCS=String.cpp
 CC=gcc
 CFLAGS=-c -Wall
-DIRS=-Iboost_1_53_0
+DIRS=-I. 
 LIBS=-lstdc++
 OBJS=$(SRCS:.cpp=.o)
 AXUS=.*.un~ .*.swp
-TESTER=
+TESTER=tester
+EXE=main
 
  
-$(EXE): $(OBJS) 
+$(EXE): $(OBJS) main.cpp
 	$(CC) -o $@ $^ $(LIBS)
+
+$(TESTER): $(OBJS) wl/Tester.cpp
+	$(CC) -o $@ $^ $(LIBS) $(DIRS)
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -o $@ $(@:.o=.cpp)  $(DIRS)
@@ -28,10 +31,13 @@ pack:
 run: $(EXE)
 	./$(EXE)
 
+test: $(TESTER)
+	./$(TESTER)
+
 
 depend: depend.d
 
-depend.d: $(SRCS)		
+depend.d: $(SRCS) main.cpp wl/Tester.cpp	
 	rm -f ./depend.d
 	$(CC) -MM $^ $(DIRS) >> $@
 
