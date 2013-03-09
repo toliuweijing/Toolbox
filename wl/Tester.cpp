@@ -1,29 +1,24 @@
+// wl Tester.cpp implementation file ---------------------------  
+// Created by Weijing Liu 
+// Copyright (c) 2013 Weijing Liu. All rights reserved.
+
+
+
 #include "AutoBlock.hpp"
-#include "String.hpp"
-#include <map>
 #include <iostream>
 #include <cassert>
 
 
-using std::cout;
-using std::map;
-
-struct String::tester 
-{
-    //struct testPrint : public AutoFunctor<testPrint> 
-    AUTOBLOCK(testPrint)
-    {
-        String a;
-        a.Print();
-    }
-    END_AUTOBLOCK
-};
-
+// struct A::Tester 
+// {
+//      AUTOBLOCK(testAMethod1)
+//      {
+//          assert(...)
+//      }
+//      END_AUTOBLOCK
+// }
 
 int main(int argc, const char *argv[])
 {
-    //String::tester::testPrint a;
-    //cout << TesterManager::testers_.size();
-    //TesterManager::Run();
     return 0;
 }

@@ -1,4 +1,4 @@
-SRCS=String.cpp
+SRCS=
 CC=gcc
 CFLAGS=-c -Wall
 DIRS=-I. 
@@ -20,7 +20,7 @@ $(TESTER): $(OBJS) wl/Tester.cpp
 
 clean:
 	rm -f *.gch
-	rm -f $(EXE) $(OBJS)
+	rm -f $(EXE) $(OBJS) $(TESTER)
 	
 pack:
 	make clean

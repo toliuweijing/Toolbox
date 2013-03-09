@@ -1,3 +1,7 @@
+// wl Counter.hpp header file ---------------------------  
+// Created by Weijing Liu 
+// Copyright (c) 2013 Weijing Liu. All rights reserved.
+
 #ifndef COUNT_HPP
 #define COUNT_HPP 
 
