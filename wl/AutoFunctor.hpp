@@ -2,7 +2,6 @@
 // Created by Weijing Liu 
 // Copyright (c) 2013 Weijing Liu. All rights reserved.
 
->>>>>>> version 1.0
 #ifndef AUTOFUNCTOR_HPP
 #define AUTOFUNCTOR_HPP 
 

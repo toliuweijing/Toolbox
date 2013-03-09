@@ -4,7 +4,7 @@ CFLAGS=-c -Wall
 DIRS=-I. 
 LIBS=-lstdc++
 OBJS=$(SRCS:.cpp=.o)
-AXUS=.*.un~ .*.swp
+AXUS=.*.un~ .*.swp *.cpp~
 TESTER=tester
 EXE=main
 
@@ -19,7 +19,7 @@ $(TESTER): $(OBJS) wl/Tester.cpp
 	$(CC) $(CFLAGS) -o $@ $(@:.o=.cpp)  $(DIRS)
 
 clean:
-	rm -f *.gch
+	rm -f *.gch depend.d
 	rm -f $(EXE) $(OBJS) $(TESTER)
 	
 pack:

@@ -9,16 +9,23 @@
 #include <cassert>
 
 
-// struct A::Tester 
-// {
-//      AUTOBLOCK(testAMethod1)
-//      {
-//          assert(...)
-//      }
-//      END_AUTOBLOCK
-// }
+ //struct A::Tester 
+ //{
+      //AUTOBLOCK(testAMethod1)
+      //{
+          //assert(...)
+      //}
+      //END_AUTOBLOCK
+ //}
+
+AUTOBLOCK(test1)
+{
+    assert(0);
+}
+END_AUTOBLOCK
 
 int main(int argc, const char *argv[])
 {
+    std::cout << "running Tester.cpp\n";
     return 0;
 }
