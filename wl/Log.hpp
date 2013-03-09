@@ -7,10 +7,10 @@
 
 #include <cstdio>   // printf()
 
-#define ENABLE_LOG 1    // 
+static bool enable_log = true;
 #define LOG(args...) do { \
-        if (ENABLE_LOG) printf(args);   \
+        if (enable_log) \
+        printf(args);   \
         } while (0);
-
 
 #endif  //LOG_HPP
