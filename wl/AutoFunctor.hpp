@@ -5,13 +5,18 @@
 #ifndef AUTOFUNCTOR_HPP
 #define AUTOFUNCTOR_HPP 
 
+#include <typeinfo>
+#include <cstdio>
 
 template<class T> class AutoFunctor// : public ITester
 {
 protected:
     AutoFunctor() 
     {
-        trigger_;
+    }
+    virtual ~AutoFunctor()
+    {
+        printf("tester [%s] is passed\n", typeid(trigger_).name());
     }
 private:
     // Auto-trigger a T's constructor at early runtime.
