@@ -23,6 +23,7 @@
 //   END_AUTOBLOCK
 
 #include "AutoFunctor.hpp"
+#include <cassert>
 
 
 
