@@ -1,5 +1,5 @@
 EXE=
-SRCS=
+SRCS= #only put .CPPS files
 #----------- No Touch on the following --------- 
 CC=gcc
 CFLAGS=-c -Wall -std=c++11
