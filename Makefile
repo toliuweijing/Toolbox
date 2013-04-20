@@ -1,3 +1,5 @@
+#--------- Makefile template --------
+# fill out the blanks at the first few lines and it will be ready to make. Especially make can be run multithreading by typing make -j 4
 EXE 	= #parser
 CPPS 	= #Identifier.cpp KeyWord.cpp Lexer.cpp Number.cpp Parser.cpp String.cpp Token.cpp RefactorSymbolTable.cpp EquivalentManager.cpp Type.cpp SymbolTable.cpp Semantics.cpp
 TESTCPPS=
