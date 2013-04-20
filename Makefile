@@ -1,39 +1,45 @@
-EXE=
-SRCS= #only put .CPPS files
-#----------- No Touch on the following --------- 
-CC=gcc
-CFLAGS=-c -Wall -std=c++11
-DIRS=
-LIBS=-lstdc++
-OBJS=$(SRCS:.cpp=.o)
-AXUS=.*.un~ .*.swp
+EXE 	= #parser
+CPPS 	= #Identifier.cpp KeyWord.cpp Lexer.cpp Number.cpp Parser.cpp String.cpp Token.cpp RefactorSymbolTable.cpp EquivalentManager.cpp Type.cpp SymbolTable.cpp Semantics.cpp
+TESTCPPS=
+CC 	= #g++
+CFLAGS 	= #-c -g
+DIRS 	= #-I. -I/opt/local/include/
+LIBS 	= 
+BUILD 	= #bin
+SPECS 	= #parse.tab.o lex.yy.o
+#CPPS   +=$(TESTCPPS) # comment out to run tests
+#--------- No Touch on the lines below ----
+OBJS 	=$(CPPS:%.cpp=$(BUILD)/%.o) # objects
+DEPS 	=$(CPPS:%.cpp=$(BUILD)/%.d) # dependencies
+OBJS   +=$(SPECS:%=$(BUILD)/%)
 
- 
-$(EXE): $(OBJS) 
-	$(CC) -o $@ $^ $(LIBS)
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -o $@ $(@:.o=.cpp)  $(DIRS)
+$(BUILD)/$(EXE): $(DEPS) $(OBJS)
+	$(CC) -o $@ $(OBJS) $(LIBS)
+
+
+$(BUILD)/%.d: %.cpp
+	$(CC) -MM $^ $(DIRS) > $@
+
+$(BUILD)/%.o: %.cpp
+	$(CC) $(CFLAGS) -o $@ $^ $(DIRS)
 
 clean:
-	rm -f *.gch
-	rm -f $(EXE) $(OBJS)
+	rm -f $(DEPS) $(BUILD)/$(EXE) $(OBJS)
+
+run: $(BUILD)/$(EXE)
+	./$(BUILD)/$(EXE) sample_test/test1.pas
 	
-pack:
-	make clean
-	rm -f $(AXUS)
-	tar -cf ../$(EXE).tar .
 
+-include $(DEPS)
 
-run: $(EXE)
-	./$(EXE)
+#-------- SPECS ----------
+#$(BUILD)/a.o: a.c
+#$(BUILD)/parse.tab.o: parse.y
+	#bison -d parse.y
+	#$(CC) $(CFLAGS) -o $@ parse.tab.c $(DIRS)
 
-
-depend: depend.d
-
-depend.d: $(SRCS)		
-	rm -f ./depend.d
-	$(CC) -MM $^ $(DIRS) >> $@
-
-include depend.d
+#$(BUILD)/lex.yy.o: lex.yy.l
+	#flex lex.yy.l
+	#$(CC) $(CFLAGS) -o $@ lex.yy.c $(DIRS)
 
