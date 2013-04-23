@@ -21,7 +21,7 @@ $(BUILD)/$(EXE): $(DEPS) $(OBJS)
 
 
 $(BUILD)/%.d: %.cpp
-	$(CC) -MM $^ $(DIRS) > $@
+	echo '$(BUILD)/\c' > $@ && $(CC) -MM $(@:$(BUILD)/%.d=%.cpp) $(DIRS) >> $@ 
 
 $(BUILD)/%.o: %.cpp
 	$(CC) $(CFLAGS) -o $@ $^ $(DIRS)
