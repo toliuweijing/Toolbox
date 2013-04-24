@@ -11,6 +11,7 @@ BUILD 	= #bin
 SPECS 	= #parse.tab.o lex.yy.o
 #CPPS   +=$(TESTCPPS) # comment out to run tests
 #--------- No Touch on the lines below ----
+SHELL 	=bash
 OBJS 	=$(CPPS:%.cpp=$(BUILD)/%.o) # objects
 DEPS 	=$(CPPS:%.cpp=$(BUILD)/%.d) # dependencies
 OBJS   +=$(SPECS:%=$(BUILD)/%)
@@ -21,7 +22,7 @@ $(BUILD)/$(EXE): $(DEPS) $(OBJS)
 
 
 $(BUILD)/%.d: %.cpp
-	echo '$(BUILD)/\c' > $@ && $(CC) -MM $(@:$(BUILD)/%.d=%.cpp) $(DIRS) >> $@ 
+	@echo -n "$(BUILD)/" > $@ && $(CC) -MM $(@:$(BUILD)/%.d=%.cpp) $(DIRS) >> $@ 
 
 $(BUILD)/%.o: %.cpp
 	$(CC) $(CFLAGS) -o $@ $^ $(DIRS)
