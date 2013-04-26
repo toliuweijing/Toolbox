@@ -20,8 +20,10 @@ OBJS   +=$(SPECS:%=$(BUILD)/%)
 $(BUILD)/$(EXE): $(DEPS) $(OBJS)
 	$(CC) -o $@ $(OBJS) $(LIBS)
 
+$(BUILD):
+	@mkdir -p $@
 
-$(BUILD)/%.d: %.cpp
+$(BUILD)/%.d: $(BUILD) %.cpp
 	@echo -n "$(BUILD)/" > $@ && $(CC) -MM $(@:$(BUILD)/%.d=%.cpp) $(DIRS) >> $@ 
 
 $(BUILD)/%.o: %.cpp
