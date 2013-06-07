@@ -8,14 +8,11 @@
 #include <typeinfo>
 #include <cstdio>
 
-template<class T> class AutoFunctor// : public ITester
-{
+template<class T> class AutoFunctor {// : public ITester
 protected:
-    AutoFunctor() 
-    {
-    }
-    virtual ~AutoFunctor()
-    {
+    AutoFunctor() {}
+    
+    virtual ~AutoFunctor() {
         printf("tester [%s] is passed\n", typeid(trigger_).name());
     }
 private:
