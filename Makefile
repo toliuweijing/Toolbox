@@ -24,10 +24,10 @@ $(BUILD):
 	@mkdir -p $@
 
 $(BUILD)/%.d: $(BUILD) %.cpp
-	@echo -n "$(BUILD)/" > $@ && $(CC) -MM $(@:$(BUILD)/%.d=%.cpp) $(DIRS) >> $@ 
+	@echo -n "$(BUILD)/" > $@ && $(CC) $(CFLAGS) -MM $(@:$(BUILD)/%.d=%.cpp) $(DIRS) >> $@ 
 
 $(BUILD)/%.o: %.cpp
-	$(CC) $(CFLAGS) -o $@ $^ $(DIRS)
+	$(CC) $(CFLAGS) -o $@ $(@:$(BUILD)/%.o=%.cpp) $(DIRS)
 
 clean:
 	rm -f $(DEPS) $(BUILD)/$(EXE) $(OBJS)
